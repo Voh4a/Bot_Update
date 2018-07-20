@@ -131,9 +131,9 @@ namespace Web_Bot_Update
             T_LastName.SendKeys(lastName);
             T_Email.SendKeys(email);
 
-            data = office.ToString("g");
+            data = office.ToString("g").Replace("_", " ");
             DL_Office.Click();
-            data = gender.ToString("g");
+            data = gender.ToString("g").Replace("_", " ");
             RB_Gender.Click();
 
             B_Create.Click();
@@ -152,16 +152,16 @@ namespace Web_Bot_Update
             if(L_Email.Text != email)
                 throw new Exception("Don't valid Email");
             // Check Gender
-            if (L_Gender.Text != gender.ToString("g"))
+            if (L_Gender.Text != gender.ToString("g").Replace("_", " "))
                 throw new Exception("Don't valid Gender");
             // Check Office
-            if (L_Office.Text != office.ToString("g"))
+            if (L_Office.Text != office.ToString("g").Replace("_", " "))
                 throw new Exception("Don't valid Office");
 
             // For performing javaScript
             IJavaScriptExecutor js = webDriver as IJavaScriptExecutor;
             // alert message
-            js.ExecuteScript("alert('Everything Good! User is verified')");
+            js.ExecuteScript("alert('Everything is Good! User is verified')");
 
         }
     }
